@@ -1,0 +1,40 @@
+Structure du dossier
+Le num‚ro de s‚rie du volume est 54E5-1A2F
+C:.
+|   README.md
+|   requirements.txt
+|   structure.txt
+|   
++---data
+|   +---external
+|   |       .gitkeep
+|   |       
+|   +---processed
+|   |       .gitkeep
+|   |       
+|   \---raw
+|           .gitkeep
+|           
++---models
+|       final_model.pkl
+|       model_metadata.json
+|       scaler.pkl
+|       
++---notebooks
+|       01_EDA.ipynb
+|       02_feature_engineering.ipynb
+|       03_model_training.ipynb
+|       04_evaluation.ipynb
+|       
++---raw
+|       04_MDG_EPM2122_EMPL.dta
+|       a.py
+|       EMPL_complet.csv
+|       variable.csv
+|       
+\---src
+        api.py
+        predict.py
+        preprocess.py
+        train.py
+        
