@@ -30,6 +30,7 @@ C:.
 |       04_MDG_EPM2122_EMPL.dta
 |       a.py
 |       EMPL_complet.csv
+|       metier.csv
 |       variable.csv
 |       
 \---src
