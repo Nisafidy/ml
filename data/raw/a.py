@@ -9,7 +9,7 @@ print(f"2 - Dossier actuel: {dossier_actuel}")
 
 # Liste des fichiers
 fichiers = [
-    '04_MDG_EPM2122_EMPL.dta',
+    '21_MDG_EPM2122_IMPO.dta',
 ]
 
 for fichier in fichiers:

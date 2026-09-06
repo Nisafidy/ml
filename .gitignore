@@ -1,2 +1,4 @@
 data/raw/04_MDG_EPM2122_EMPL.dta
+data/raw/*.dta
+
 .venv
