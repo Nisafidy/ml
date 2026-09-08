@@ -1,0 +1,133 @@
+﻿Colonne;Type;Non-Null;% Présent;Unique;Min;Max;Moyenne;Exemples
+q4a_00;int64;67969;100.0;15;1;15;1.59;[1, 2, 1]
+q4a_01;str;58136;85.5;2;-;-;-;['Oui', 'Non', 'Oui']
+q4a_02;str;47739;70.2;2;-;-;-;['Oui', 'Non', 'Oui']
+q4a_03;str;34827;51.2;2;-;-;-;['Non', 'Non', 'Oui']
+q4a_96;str;34250;50.4;2;-;-;-;['Non', 'Non', 'Non']
+q4a_97;str;32531;47.9;2;-;-;-;['Non', 'Non', 'Non']
+q4a_04;str;29439;43.3;2;-;-;-;['Non', 'Non', 'Non']
+q4a_09;str;29350;43.2;5;-;-;-;['Aucun des quatre ci-dessus', 'Aucun des quatre c...
+q4a_45;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_49c;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_49b;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_49a;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_49;float64;23886;35.1;26;11112.0;22222.0;22019.63;[22222.0, 22222.0, 22222.0]
+q4a_47;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_41;str;23886;35.1;65;-;-;-;['2022.0', '2021.0', '2022.0']
+q4a_43;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_42;str;23886;35.1;13;-;-;-;['1.0', '12.0', '1.0']
+q4a_49d;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_39;str;23886;35.1;3;-;-;-;['Non', 'Non', 'Non']
+q4a_38;str;23886;35.1;3;-;-;-;['Non', 'Non', 'Non']
+q4a_40;str;23886;35.1;5;-;-;-;"[""Il n'y a aucun enregistrement fait ni conservÃ© ..."
+q4a_69;str;23886;35.1;117;-;-;-;['30.0', '30.0', '30.0']
+q4a_51;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_53;str;23886;35.1;4;-;-;-;['TrÃ¨s insatisfait', 'TrÃ¨s insatisfait', 'PlutÃ´...
+q4a_36;str;23886;35.1;9;-;-;-;['Dans la rue ou dans un autre espace public sans ...
+q4a_72;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_73;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_75;str;23886;35.1;125;-;-;-;['26.0', '30.0', '30.0']
+q4a_83;str;23886;35.1;2;-;-;-;['Oui', 'Oui', 'Oui']
+q4a_84;str;23886;35.1;2;-;-;-;['Non', 'Oui', 'Oui']
+q4a_87;str;23886;35.1;2;-;-;-;['Oui', 'Oui', 'Oui']
+q4a_89;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_93a;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_93b;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_37;str;23886;35.1;6;-;-;-;['Une personne', 'Entre 2 et 4 personnes', 'Entre ...
+q4a_49e;str;23886;35.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_20;str;23886;35.1;3;-;-;-;['Entreprise sans nom', 'Entreprise sans nom', 'En...
+q4a_19c;float64;23865;35.1;10;0.0;9.0;1.97;[5.0, 1.0, 4.0]
+q4a_19b;float64;23869;35.1;9;0.0;9.0;1.95;[1.0, 1.0, 1.0]
+q4a_17;float64;23886;35.1;4;1.0;4.0;1.1;[1.0, 1.0, 1.0]
+q4a_19a;float64;23872;35.1;93;0.0;9333.0;70.28;[9.0, 9.0, 6.0]
+q4a_19;float64;23870;35.1;434;9.0;9700.0;6909.79;[9151.0, 9112.0, 6142.0]
+q4a_18;str;23886;35.1;7502;-;-;-;['MPITONDRA ENTANA', 'MIVAROTRA VONINKAZO MITETY',...
+q4a_23;str;23886;35.1;386;-;-;-;['H5229 ', 'G4799 ', 'A0220 ']
+q4a_24;str;23886;35.1;5;-;-;-;['En tant que salariÃ©', 'Pour votre propre entrep...
+q4a_19d;float64;23847;35.1;10;0.0;9.0;1.38;[1.0, 2.0, 2.0]
+q4a_230;str;22944;33.8;30;-;-;-;['H', 'G', 'A']
+q4a_23b;float64;22920;33.7;10;0.0;9.0;2.65;[2.0, 9.0, 2.0]
+q4a_22;str;22937;33.7;7106;-;-;-;['MPITONDRA ENTANA', 'FIVAROTANA VONINKAZO', 'FANA...
+q4a_23a;float64;22925;33.7;92;0.0;99.0;28.73;[52.0, 47.0, 2.0]
+q4a_23c;float64;22898;33.7;10;0.0;9.0;2.44;[9.0, 9.0, 0.0]
+q4a_46b;str;21199;31.2;4;-;-;-;['Jour', 'Jour', 'Mois']
+q4a_46c;str;21199;31.2;3;-;-;-;['Non concernÃ©', 'Non concernÃ©', 'Non concernÃ©'...
+q4a_10;str;18389;27.1;5;-;-;-;['Aucun des quatre ci-dessus', 'Aucun des quatre c...
+q4a_11;str;13252;19.5;5;-;-;-;"[""Uniquement pour l'usage familial"", 'Principaleme..."
+q4a_26;str;12052;17.7;2;-;-;-;['Non', 'Non', 'Non']
+q4a_35;str;11708;17.2;3;-;-;-;['Non', 'Non', 'Non']
+q4a_33;str;11708;17.2;3;-;-;-;['Non', 'Non', 'Non']
+q4a_32a;str;11708;17.2;4;-;-;-;['Aucun', 'Aucun', 'Aucun']
+q4a_32;str;11708;17.2;3;-;-;-;['Non', 'Non', 'Non']
+q4a_29;str;11708;17.2;4;-;-;-;['Oui, contrat verbal', 'Oui, contrat verbal', 'Ou...
+q4a_27;str;10487;15.4;7;-;-;-;['Entreprise privÃ©e (non agricole)', 'Entreprise ...
+q4a_28;str;10487;15.4;44;-;-;-;['7', '5', '7']
+q4a_88;str;8844;13.0;9;-;-;-;['Avoir un emploi mieux rÃ©munÃ©rÃ©s', 'Avoir un e...
+q4a_30;str;8208;12.1;4;-;-;-;"[""Jusqu'au jour oÃ¹ une tÃ¢che est terminÃ©e"", ""Ju..."
+q4a_31;str;8208;12.1;8;-;-;-;['DurÃ©e non prÃ©cisÃ©e', 'DurÃ©e non prÃ©cisÃ©e',...
+q4a_13;str;7110;10.5;2;-;-;-;['Non', 'Non', 'Non']
+q4a_16;str;6439;9.5;21;-;-;-;['Mettre 0 si Absent(e) durant les 7 derniers jour...
+q4a_15;str;6439;9.5;8;-;-;-;['7.0', '5.0', '4.0']
+q4a_141;str;6439;9.5;897;-;-;-;['AKOHO', 'VARY', 'VARY']
+q4a_92;str;5630;8.3;24;-;-;-;['10.0', '10.0', '6.0']
+q4a_91;float64;5630;8.3;7;1.0;7.0;3.7;[5.0, 5.0, 6.0]
+q4a_90;str;5630;8.3;62;-;-;-;['Vanille verte', 'Vanille verte', 'Vanille verte'...
+q4a_85;str;5330;7.8;2;-;-;-;['Oui', 'Oui', 'Oui']
+q4a_86;str;4146;6.1;61;-;-;-;['10.0', '30.0', '3.0']
+q4a_52b;str;3990;5.9;4;-;-;-;['Jour', 'Jour', 'Jour']
+q4a_52a;str;4005;5.9;118;-;-;-;['3.0', '3.0', '2.0']
+q4a_21;str;3371;5.0;2541;-;-;-;['COTISSE', 'SOCIETE CMDM', 'ECOLE PRIMAIRE PUBLIQ...
+q4a_25;str;2618;3.9;4;-;-;-;"['Vous avec les autres', 'Vous avec les autres', ""..."
+q4a_95;str;2447;3.6;24;-;-;-;['7.0', '6.0', '1.0']
+q4a_94;float64;2447;3.6;7;1.0;7.0;5.32;[7.0, 2.0, 7.0]
+q4a_79;str;2140;3.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_77;str;2117;3.1;2;-;-;-;['Oui', 'Oui', 'Non']
+q4a_76;str;2140;3.1;51;-;-;-;['10.0', '16.0', '30.0']
+q4a_59;float64;2140;3.1;25;0.0;78.0;5.24;[7.0, 7.0, 9.0]
+q4a_56c;float64;2134;3.1;10;0.0;9.0;2.54;[0.0, 0.0, 2.0]
+q4a_541;str;2140;3.1;948;-;-;-;['MAMAKY VATO', 'MANASA LAMBA', 'MAMBOLY VARY']
+q4a_54d;float64;2132;3.1;10;0.0;9.0;1.24;[3.0, 3.0, 1.0]
+q4a_55;str;2140;3.1;868;-;-;-;['FAMAKINA VATO', 'FANASANA LAMBA', 'MAMBOLY VARY'...
+q4a_56;str;2137;3.1;163;-;-;-;['B0810', 'T9700', 'A0112']
+q4a_54c;float64;2137;3.1;9;1.0;9.0;1.63;[1.0, 3.0, 1.0]
+q4a_560;str;2137;3.1;20;-;-;-;['B', 'T', 'A']
+q4a_56a;float64;2137;3.1;57;1.0;99.0;13.59;[8.0, 97.0, 1.0]
+q4a_54b;float64;2137;3.1;6;1.0;9.0;2.05;[1.0, 1.0, 1.0]
+q4a_54a;float64;2132;3.1;10;0.0;9.0;6.48;[7.0, 9.0, 6.0]
+q4a_56b;float64;2137;3.1;10;0.0;9.0;2.74;[1.0, 0.0, 1.0]
+q4a_54;float64;2137;3.1;143;110.0;9333.0;6669.46;[7113.0, 9133.0, 6111.0]
+q4a_57;str;2140;3.1;5;-;-;-;['En tant que salariÃ©', 'En tant que salariÃ©', '...
+q4a_98;str;1947;2.9;14;-;-;-;['Poster, actualiser mon CV sur des rÃ©seaux profe...
+q4a_44;float64;1837;2.7;43;1.0;245.0;37.91;[3.0, 3.0, 30.0]
+q4a_34;float64;1780;2.6;37;0.0;300.0;24.4;[1.0, 30.0, 30.0]
+q4a_67;str;1521;2.2;2;-;-;-;['Non', 'Non', 'Non']
+q4a_65;str;1521;2.2;2;-;-;-;['Non', 'Non', 'Non']
+q4a_63;str;1521;2.2;2;-;-;-;['Non', 'Non', 'Non']
+q4a_62b;str;1521;2.2;4;-;-;-;['Jour', 'Semaine', 'Mois']
+q4a_61;str;1521;2.2;7;-;-;-;['Entreprise privÃ©e (non agricole)', 'MÃ©nage pri...
+q4a_60;str;1521;2.2;4;-;-;-;['Ne sait pas', 'Non applicable', 'Non applicable'...
+q4a_58;str;1296;1.9;2;-;-;-;['Non', 'Oui', 'Non']
+q4a_74;str;887;1.3;42;-;-;-;['5.0', '2.0', '2.0']
+q4a_50a;str;825;1.2;104;-;-;-;['20.0', '15.0', 'Si les avantages sont tous inclu...
+q4a_78;str;809;1.2;49;-;-;-;['20.0', '15.0', '30.0']
+q4a_71;float64;782;1.2;18;0.0;24.0;6.75;[5.0, 6.0, 8.0]
+q4a_70;float64;782;1.2;7;1.0;7.0;5.19;[5.0, 6.0, 6.0]
+q4a_48a;str;719;1.1;82;-;-;-;['200.0', '50.0', '5.0']
+q4a_50b;str;774;1.1;4;-;-;-;['An', 'Mois', 'An']
+q4a_48b;str;680;1.0;4;-;-;-;['Mois', 'Mois', 'Semaine']
+q4a_68b;str;336;0.5;4;-;-;-;['Jour', 'Jour', 'Jour']
+q4a_68a;str;337;0.5;23;-;-;-;['1.0', '1.0', '1.0']
+q4a_80;str;143;0.2;22;-;-;-;['14.0', '5.0', '20.0']
+q4a_05;str;121;0.2;12;-;-;-;['Mauvaises conditions climatiques, catastrophes n...
+q4a_81;str;142;0.2;2;-;-;-;['Oui', 'Oui', 'Non']
+q4a_07;str;37;0.1;3;-;-;-;['Oui', 'Oui', 'Non']
+q4a_99;str;98;0.1;2;-;-;-;['Non', 'Non', 'Non']
+q4a_12;str;31;0.0;4;-;-;-;['Principalement vendus', 'Principalement vendus',...
+q4a_08;str;8;0.0;2;-;-;-;['Non', 'Non', 'Non']
+q4a_14;float64;0;0.0;0;-;-;-;[]
+q4a_66a;float64;11;0.0;10;3.0;10000.0;1391.64;[5.0, 5000.0, 10.0]
+q4a_64b;str;12;0.0;3;-;-;-;['Mois', 'Semaine', 'Semaine']
+q4a_06;str;20;0.0;2;-;-;-;['Oui', 'Oui', 'Oui']
+q4a_82;float64;30;0.0;17;1.0;40.0;11.77;[15.0, 40.0, 3.0]
+q4a_64a;float64;12;0.0;8;3.0;10000.0;865.67;[15.0, 3.0, 10000.0]
+q4a_66b;str;11;0.0;3;-;-;-;['Semaine', 'Semaine', 'Semaine']

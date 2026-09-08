@@ -5,6 +5,7 @@ import sys
 import traceback
 import joblib
 import pandas as pd
+import numpy as np
 
 
 def get_valid_model_path(candidate_paths):
@@ -13,6 +14,59 @@ def get_valid_model_path(candidate_paths):
         if os.path.exists(path) and os.path.getsize(path) > 0:
             return path
     return None
+
+
+def get_expected_features(metadata_paths):
+    """
+    Récupère les noms des features attendus depuis le fichier metadata.
+    Retourne également les features originales pour la validation.
+    """
+    for meta_path in metadata_paths:
+        if os.path.exists(meta_path) and os.path.getsize(meta_path) > 0:
+            try:
+                with open(meta_path, 'r', encoding='utf-8') as f:
+                    meta = json.load(f)
+                    return {
+                        'feature_names': meta.get('feature_names', []),
+                        'original_features': meta.get('original_features', []),
+                        'target': meta.get('target', 'score_individuel_epm'),
+                        'model_name': meta.get('model_name', 'Unknown')
+                    }
+            except Exception:
+                continue
+    return {
+        'feature_names': [],
+        'original_features': [],
+        'target': 'score_individuel_epm',
+        'model_name': 'Unknown'
+    }
+
+
+def prepare_features_for_prediction(data, original_features):
+    """
+    Prépare les données d'entrée au format attendu par le modèle.
+    """
+    # Créer un DataFrame avec une seule ligne
+    df_input = pd.DataFrame([data])
+    
+    # Vérifier que toutes les features originales sont présentes
+    missing_features = [f for f in original_features if f not in df_input.columns]
+    if missing_features:
+        raise ValueError(
+            f"Variables manquantes dans les données d'entrée : {missing_features}"
+        )
+    
+    # Ne garder que les colonnes nécessaires dans le bon ordre
+    df_prepared = df_input[original_features].copy()
+    
+    # Gérer les valeurs manquantes (remplacer par 0 pour les numériques, 'Unknown' pour les catégorielles)
+    for col in df_prepared.columns:
+        if df_prepared[col].dtype in ['float64', 'int64']:
+            df_prepared[col] = df_prepared[col].fillna(0)
+        else:
+            df_prepared[col] = df_prepared[col].fillna('Unknown')
+    
+    return df_prepared
 
 
 def main():
@@ -38,7 +92,7 @@ def main():
         ml_dir = os.path.abspath(os.path.join(src_dir, '..'))
         root_dir = os.path.abspath(os.path.join(ml_dir, '..'))
 
-        # Liste ordonnée des modèles (en priorité ton modèle valide de 256 Ko)
+        # Liste ordonnée des modèles
         candidate_models = [
             os.path.join(ml_dir, 'models', 'score_individuel_model.pkl'),
             os.path.join(root_dir, 'models', 'score_individuel_model.pkl'),
@@ -53,7 +107,12 @@ def main():
             os.path.join(root_dir, 'models', 'model_metadata.json'),
         ]
 
-        # Filtre sur les fichiers non vides
+        # 3. Chargement des métadonnées
+        metadata = get_expected_features(candidate_metadata)
+        original_features = metadata.get('original_features', [])
+        target = metadata.get('target', 'score_individuel_epm')
+
+        # 4. Trouver et charger le modèle
         model_path = get_valid_model_path(candidate_models)
 
         if not model_path:
@@ -67,38 +126,99 @@ def main():
             )
             sys.exit(1)
 
-        # 3. Chargement du modèle XGBoost (256 Ko)
-        model = joblib.load(model_path)
+        # Chargement du pipeline complet (prétraitement + modèle)
+        pipeline = joblib.load(model_path)
 
-        # 4. Chargement des colonnes d'entraînement depuis model_metadata.json
-        expected_features = []
-        for meta_path in candidate_metadata:
-            if os.path.exists(meta_path) and os.path.getsize(meta_path) > 0:
-                with open(meta_path, 'r', encoding='utf-8') as f:
-                    meta = json.load(f)
-                    expected_features = meta.get('feature_names', [])
-                break
+        print(
+            f"✅ Modèle chargé : {model_path}",
+            file=sys.stderr
+        )
+        print(
+            f"📊 Modèle nom : {metadata.get('model_name', 'Unknown')}",
+            file=sys.stderr
+        )
 
-        if not expected_features and hasattr(model, 'feature_names_in_'):
-            expected_features = list(model.feature_names_in_)
+        # 5. Vérifier que le modèle est un pipeline
+        if not hasattr(pipeline, 'named_steps'):
+            print(
+                json.dumps({
+                    'error': (
+                        'Le fichier chargé n\'est pas un pipeline sklearn.'
+                        ' Vérifiez que vous utilisez le bon modèle.'
+                    )
+                }),
+                file=sys.stderr
+            )
+            sys.exit(1)
 
-        # 5. Transformation et réalignement des données reçues
-        df_single = pd.DataFrame([data])
-        df_encoded = pd.get_dummies(df_single)
-
-        if expected_features:
-            df_aligned = pd.DataFrame(0, index=[0], columns=expected_features)
-            for col in df_encoded.columns:
-                if col in df_aligned.columns:
-                    df_aligned[col] = df_encoded[col].values
+        # 6. Préparation des données
+        if original_features:
+            # Utiliser les features originales pour préparer les données
+            df_prepared = prepare_features_for_prediction(data, original_features)
+            print(
+                f"📋 Features originales : {original_features}",
+                file=sys.stderr
+            )
         else:
-            df_aligned = df_encoded
+            # Fallback : utiliser toutes les colonnes disponibles
+            df_prepared = pd.DataFrame([data])
+            # Remplacer les valeurs manquantes par 0
+            df_prepared = df_prepared.fillna(0)
+            print(
+                "⚠️ Aucune feature originale trouvée, utilisation de toutes les colonnes",
+                file=sys.stderr
+            )
 
-        # 6. Prédiction
-        predicted_score = float(model.predict(df_aligned)[0])
+        # 7. Vérification des données
+        print(
+            f"📊 Données d'entrée : {df_prepared.shape[1]} colonnes",
+            file=sys.stderr
+        )
+        print(
+            f"🔍 Colonnes : {list(df_prepared.columns)}",
+            file=sys.stderr
+        )
+
+        # 8. Prédiction avec le pipeline
+        try:
+            predicted_score = float(pipeline.predict(df_prepared)[0])
+        except Exception as e:
+            print(
+                json.dumps({
+                    'error': (
+                        f"Erreur lors de la prédiction : {str(e)}. "
+                        f"Vérifiez que les données sont correctement formatées."
+                    ),
+                    'traceback': traceback.format_exc(),
+                }),
+                file=sys.stderr
+            )
+            sys.exit(1)
+
+        # 9. Arrondir le score entre 0 et 100
         score_clamped = round(max(0.0, min(100.0, predicted_score)), 2)
 
-        print(json.dumps({'score_individuel_epm': score_clamped}))
+        # 10. Retourner le résultat
+        result = {target: score_clamped}
+        print(json.dumps(result))
+
+    except json.JSONDecodeError as e:
+        print(
+            json.dumps({
+                'error': f'Erreur de parsing JSON : {str(e)}',
+                'traceback': traceback.format_exc(),
+            })
+        )
+        sys.exit(1)
+
+    except ValueError as e:
+        print(
+            json.dumps({
+                'error': str(e),
+                'traceback': traceback.format_exc(),
+            })
+        )
+        sys.exit(1)
 
     except Exception as e:
         print(
