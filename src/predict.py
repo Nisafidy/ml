@@ -42,6 +42,73 @@ def get_expected_features(metadata_paths):
     }
 
 
+def restore_column_transformer_compatibility(pipeline):
+    """Restaure un attribut absent lors du chargement avec scikit-learn 1.3."""
+    for step in getattr(pipeline, 'named_steps', {}).values():
+        if hasattr(step, 'transformers_') and not hasattr(
+            step,
+            '_name_to_fitted_passthrough'
+        ):
+            step._name_to_fitted_passthrough = {}
+
+
+REGION_CODES = {
+    'analamanga': 11,
+    'vakinankaratra': 12,
+    'vakinakaratra': 12,
+    'itasy': 13,
+    'bongolava': 14,
+    'matsiatra ambony': 21,
+    'haute matsiatra': 21,
+    'amoron i mania': 22,
+    'vatovavy': 23,
+    'ihorombe': 24,
+    'atsimo ats inanana': 25,
+    'atsimo atsinanana': 25,
+    'fitovinany': 26,
+    'atsinanana': 31,
+    'analanjirofo': 32,
+    'alaotra mangoro': 33,
+    'boeny': 41,
+    'sofia': 42,
+    'betsiboka': 43,
+    'melaky': 44,
+    'atsimo andrefana': 51,
+    'androy': 52,
+    'anosy': 53,
+    'menabe': 54,
+    'diana': 61,
+    'sava': 62,
+}
+
+
+def normalize_location_features(data):
+    """Convertit les libellés de localisation de l'interface en codes EPM."""
+    normalized = dict(data)
+
+    milieu = str(normalized.get('hhmilieu2', '')).strip().lower()
+    if milieu in ('urbain', 'urbaine', 'urban'):
+        normalized['hhmilieu2'] = 1
+    elif milieu in ('rural', 'rurale'):
+        normalized['hhmilieu2'] = 2
+    else:
+        normalized['hhmilieu2'] = pd.to_numeric(
+            normalized.get('hhmilieu2'),
+            errors='coerce'
+        )
+
+    region = str(normalized.get('hhreg', '')).strip().lower()
+    if region in REGION_CODES:
+        normalized['hhreg'] = REGION_CODES[region]
+    else:
+        normalized['hhreg'] = pd.to_numeric(
+            normalized.get('hhreg'),
+            errors='coerce'
+        )
+
+    return normalized
+
+
 def prepare_features_for_prediction(data, original_features):
     """
     Prépare les données d'entrée au format attendu par le modèle.
@@ -85,7 +152,7 @@ def main():
             )
             sys.exit(1)
 
-        data = json.loads(raw_input)
+        data = normalize_location_features(json.loads(raw_input))
 
         # 2. Localisation des répertoires
         src_dir = os.path.dirname(os.path.abspath(__file__))
@@ -128,6 +195,7 @@ def main():
 
         # Chargement du pipeline complet (prétraitement + modèle)
         pipeline = joblib.load(model_path)
+        restore_column_transformer_compatibility(pipeline)
 
         print(
             f"✅ Modèle chargé : {model_path}",
