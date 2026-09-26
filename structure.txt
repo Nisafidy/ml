@@ -6,7 +6,7 @@ C:.
 |   requirements.txt
 |   structure.txt
 |   Module4.md
-|   prediction.php
+|   prediction.php #celui qui relie le projet avec la partie ml : predict.py
 |    
 +---.venv
 
@@ -38,7 +38,9 @@ C:.
 |       
 +---notebooks
 |   |   01_EDA.ipynb
+|   |   01_EDA2.ipynb
 |   |   02_feature_engineering.ipynb
+|   |   02_feature_engineering2.ipynb
 |   |   03_model_training.ipynb
 |   |   04_evaluation.ipynb
 |   |   
@@ -53,7 +55,7 @@ C:.
 |           
 \---src
         api.py
-        predict.py
+        predict.py # le fichier qui recupère le score individuelle depuis score_individuel_epm(model_metadata.json)
         preprocess.py
         train.py
         
