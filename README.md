@@ -1,1 +1,63 @@
 # Memory_ML
+
+pip install -r requirements.txt
+
+# Structure du ml 
+C:.
+|   .gitignore
+|   README.md
+|   requirements.txt
+|   structure.txt
+|   Module4.md
+|   prediction.php #celui qui relie le projet avec la partie ml : predict.py
+|    
++---.venv
+
+|                   
++---data
+|   +---external
+|   |       .gitkeep
+|   |       
+|   +---processed
+|   |       .gitkeep
+|   |       df_eda_revenus.csv
+|   |       df_features_score.csv
+|   |       
+|   \---raw
+|           .gitignore
+|           00_MDG_EPM2122_HHINFO.dta
+|           11_MDG_EPM2122_LOGE.dta
+|           21_MDG_EPM2122_IMPO.dta
+|           a.py
+|           EMPL_complet.csv
+|           metier.csv
+|           variable.csv
+|           
++---models
+|       final_model.pkl
+|       model_metadata.json
+|       scaler.pkl
+|       score_individuel_epm.pkl
+|       
++---notebooks
+|   |   01_EDA.ipynb
+|   |   01_EDA2.ipynb
+|   |   02_feature_engineering.ipynb
+|   |   02_feature_engineering2.ipynb
+|   |   03_model_training.ipynb
+|   |   04_evaluation.ipynb
+|   |   
+|   \---.ipynb_checkpoints
+|           01_EDA-checkpoint.ipynb
+|           
++---reports
+|   \---figures
+|           01_repartition_revenus_menages.png
+|           02_resultat_ml.png
+|           ya.png
+|           
+\---src
+        api.py
+        predict.py # le fichier qui recupère le score individuelle depuis score_individuel_epm(model_metadata.json)
+        preprocess.py
+        train.py
